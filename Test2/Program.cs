@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace CodeWars
 {
@@ -12,7 +13,7 @@ namespace CodeWars
 
         static void Main(string[] args)
         {
-            //Morse
+            //Morse // CodeWars web interface supplied an API for this dictionary
             InitializeDictionary();
 
 
@@ -51,10 +52,42 @@ namespace CodeWars
             Console.WriteLine(resE);
 
 
+            //Disemvowel
+            string test = "AAABBB";
+            test.Remove(1, 1 + 1);
+            Console.WriteLine(test);
+
+
+            string resultB = Disemvowel("This website is for losers LOL!");
+            Console.WriteLine(resultB);
 
 
 
         }
+
+        //
+        public static string Disemvowel(string str)
+        {
+            //A, I, E, O, U
+
+            //    for (int i = 0; i < a.Length; i++)
+            //    {
+            //    a = a.Replace("A", "");
+            //    a = a.Replace("E", "");
+            //    a = a.Replace("I", "");
+            //    a = a.Replace("O", "");
+            //    a = a.Replace("o", "");
+            //    a = a.Replace("U", "");
+            //      }
+            //return a; 
+
+
+            return Regex.Replace(str, "[aeiouAEIOU]", "");
+        }
+
+
+
+
 
         public static bool ValidatePin(string pin)
         {
