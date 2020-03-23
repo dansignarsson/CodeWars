@@ -30,9 +30,12 @@ namespace CodeWars
             {
                 Console.WriteLine(item);
             }
-            
-            
+
+
             //ValidatePin
+
+            //string[] testCases = new string[] { "1234-+", "1234\n", "573012    ", "120412", "0000" };
+            
             string a = "1233-+";
             string b = "1234\n";
             string c = "573012   ";
@@ -53,17 +56,89 @@ namespace CodeWars
 
 
             //Disemvowel
-            string test = "AAABBB";
-            test.Remove(1, 1 + 1);
-            Console.WriteLine(test);
-
 
             string resultB = Disemvowel("This website is for losers LOL!");
             Console.WriteLine(resultB);
 
 
+            //Exes and Ohs
+
+            //(true, XO("xo"))
+            //(true, XO("xxOo"))
+            //(false, XO("xxxm"))
+            //(false, XO("Oo"))
+            //(false, XO("ooom"))
+            var inputA = "xo";
+            var inputB = "xXOo";
+            var inputC = "xoomm";
+
+            bool resultBoolA = XO(inputA);
+            bool resultBoolB = XO(inputB);
+            bool resultBoolC = XO(inputC);
+            Console.WriteLine(resultBoolA);
+            Console.WriteLine(resultBoolB);
+            Console.WriteLine(resultBoolC);
+
+
+            // Sum Of Numbers. 
+            int sumA = -1;
+            int sumB = -5;
+
+
+            int sum = GetSum(sumA, sumB);
+            Console.WriteLine(sum);
 
         }
+
+        private static int GetSum(int a, int b)
+        {
+            int sum = 0;
+
+            if (a == b)
+                return a;
+
+            if (a > b)
+            {
+                for (; b <= a; b++)
+                {
+                    sum += b;
+                }
+
+                return sum;
+            }
+
+            else 
+            {
+                for (; a <= b; a++)
+                {
+                    sum += a;
+                }
+
+                return sum;
+            }
+        }
+
+        public static bool XO(string input)
+        {
+
+            int oCount = 0;
+            int xCount = 0;
+
+            foreach (char c in input)
+            {
+                if (Char.ToLower(c) == 'x') xCount++;
+                else if (Char.ToLower(c) == 'o') oCount++;
+            }
+
+                return xCount == oCount;
+
+            //Cool "Oneliner" solution
+            // return input.ToLower().Count(i => i == 'x') == input.ToLower().Count(i => i == 'o');
+
+
+        }
+
+
 
         //
         public static string Disemvowel(string str)
