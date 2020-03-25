@@ -33,7 +33,6 @@ namespace CodeWars
 
 
             //ValidatePin
-
             //string[] testCases = new string[] { "1234-+", "1234\n", "573012    ", "120412", "0000" };
             
             string a = "1233-+";
@@ -80,7 +79,7 @@ namespace CodeWars
             Console.WriteLine(resultBoolC);
 
 
-            // Sum Of Numbers. 
+            // Sum Of Numbers(from A to B)
             int sumA = -1;
             int sumB = -5;
 
@@ -88,7 +87,35 @@ namespace CodeWars
             int sum = GetSum(sumA, sumB);
             Console.WriteLine(sum);
 
+            //Square Every Digit
+            int squareMe = 9999;
+            int squaredMe = SquareDigits(squareMe);
+
+            Console.WriteLine(squaredMe);
+
+
+
+
         }
+
+        public static int SquareDigits(int n)
+        {
+            int[] digits = n.ToString().Select(c => Convert.ToInt32(c.ToString())).ToArray();
+
+            for (int i = 0; i < digits.Length; i++)
+            {
+                digits[i] = digits[i] * digits[i];
+            }
+
+            int result = 0;
+
+            Int32.TryParse(string.Join("", digits), out result);
+
+            return result;
+
+
+        }
+
 
         private static int GetSum(int a, int b)
         {
@@ -132,7 +159,7 @@ namespace CodeWars
 
                 return xCount == oCount;
 
-            //Cool "Oneliner" solution
+            //Cool 1Line solution
             // return input.ToLower().Count(i => i == 'x') == input.ToLower().Count(i => i == 'o');
 
 
