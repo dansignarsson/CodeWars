@@ -34,18 +34,12 @@ namespace CodeWars
 
             //ValidatePin
             //string[] testCases = new string[] { "1234-+", "1234\n", "573012    ", "120412", "0000" };
-            
-            string a = "1233-+";
-            string b = "1234\n";
-            string c = "573012   ";
-            string d = "120412";
-            string e = "0000";
 
-            bool resA = ValidatePin(a);
-            bool resB = ValidatePin(b);
-            bool resC = ValidatePin(c);
-            bool resD = ValidatePin(d);
-            bool resE = ValidatePin(e);
+            bool resA = ValidatePin("1233-+");
+            bool resB = ValidatePin("1234\n");
+            bool resC = ValidatePin("573012   ");
+            bool resD = ValidatePin("120412");
+            bool resE = ValidatePin("0000");
 
             Console.WriteLine(resA);
             Console.WriteLine(resB);
@@ -56,8 +50,11 @@ namespace CodeWars
 
             //Disemvowel
 
-            string resultB = Disemvowel("This website is for losers LOL!");
+            string resultA = Disemvowel("This website is for losers LOL!");
+            string resultB = Disemvowel("Your mother is a terrible weight watcher LOL!");
+            Console.WriteLine(resultA);
             Console.WriteLine(resultB);
+
 
 
             //Exes and Ohs
@@ -93,8 +90,20 @@ namespace CodeWars
 
             Console.WriteLine(squaredMe);
 
+            //DuplicateCount
+
+            int duplicateCount = DuplicateCount("1122223334!!");
+            Console.WriteLine("Expected: 5 Count: " + duplicateCount);
 
 
+        }
+        public static int DuplicateCount(string str)
+        {
+
+
+            string test = str.ToUpper();
+            int count = 0;
+            return 0;
 
         }
 
@@ -107,9 +116,7 @@ namespace CodeWars
                 digits[i] = digits[i] * digits[i];
             }
 
-            int result = 0;
-
-            Int32.TryParse(string.Join("", digits), out result);
+            Int32.TryParse(string.Join("", digits), out int result);
 
             return result;
 
