@@ -92,19 +92,95 @@ namespace CodeWars
 
             //DuplicateCount
 
-            int duplicateCount = DuplicateCount("1122223334!!");
-            Console.WriteLine("Expected: 5 Count: " + duplicateCount);
+            int duplicateCount = DuplicateCount("AaBbCc44a");
+            Console.WriteLine("Expected: 4 Count: " + duplicateCount);
 
+
+
+            //ListFilterer
+
+            //var list = new List<object>() { 1, 2, "a", "b" };
+            //var resultR = GetIntegersFromList(list);
+            //foreach (var item in resultR)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+            //IQTest..
+            Console.WriteLine(Test("2 4 7 8 10"));
 
         }
-        public static int DuplicateCount(string str)
+
+
+
+        public static int Test(string numbers)
+        {
+            string[] test = numbers.Split(' ');
+            int[] testA = new int[test.Length];
+
+            for (int i = 0; i < test.Length; i++)
+            {
+                testA[i] = Int32.Parse(test[i]);
+            }
+
+            int evenCount = 0;
+            int unevenCount = 0;
+
+            int unevenPlacement = 0;
+            int evenPlacement = 0;
+
+            for (int i = 0; i < testA.Length; i++)
+            {
+                if (testA[i] % 2 > 0)
+                {
+                    unevenCount++;
+                    unevenPlacement = i;
+                }
+                else
+                {
+                    evenCount++;
+                    evenPlacement = i;
+                }
+            }
+
+            if (evenCount < unevenCount)
+            {
+                return evenPlacement +1;
+            }
+
+
+            else
+                return unevenPlacement +1;
+        }
+
+        //Should have done this...
+        public static int TestA(string numbers)
+        {
+            var ints = numbers.Split(' ').Select(int.Parse).ToList();
+            var unique = ints.GroupBy(n => n % 2).OrderBy(c => c.Count()).First().First();
+            return ints.FindIndex(c => c == unique) + 1;
+        }
+
+
+
+
+        public static int DetermineEven(Predicate<int> predicate)
         {
 
-
-            string test = str.ToUpper();
-            int count = 0;
             return 0;
+        }
 
+        //    return c;
+        //}
+
+
+
+
+
+        public static int DuplicateCount(string str)
+        {
+            return str.ToUpper().GroupBy(c => c).Count(c => c.Count() > 1);
         }
 
         public static int SquareDigits(int n)
