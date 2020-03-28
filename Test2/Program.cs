@@ -125,17 +125,17 @@ namespace CodeWars
             }
 
             int evenCount = 0;
-            int unevenCount = 0;
+            int oddCount = 0;
 
-            int unevenPlacement = 0;
+            int oddPlacement = 0;
             int evenPlacement = 0;
 
             for (int i = 0; i < testA.Length; i++)
             {
                 if (testA[i] % 2 > 0)
                 {
-                    unevenCount++;
-                    unevenPlacement = i;
+                    oddCount++;
+                    oddPlacement = i;
                 }
                 else
                 {
@@ -144,14 +144,14 @@ namespace CodeWars
                 }
             }
 
-            if (evenCount < unevenCount)
+            if (evenCount < oddCount)
             {
                 return evenPlacement +1;
             }
 
 
             else
-                return unevenPlacement +1;
+                return oddPlacement +1;
         }
 
         //Should have done this...
