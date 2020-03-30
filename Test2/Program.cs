@@ -110,7 +110,78 @@ namespace CodeWars
             //IQTest..
             Console.WriteLine(Test("2 4 7 8 10"));
 
+
+
+            //Number of people on the bus
+            List<int[]> peopleListInOut = new List<int[]> { new[] { 10, 0 }, new[] { 3, 5 }, new[] { 5, 8 } };
+
+            int resultNumber = Number(peopleListInOut);
+            Console.WriteLine(resultNumber);
+
+
+            //WUBWUBWUBWUB
+
+            string testAB = SongDecoder("WUBWUBABCWUB");
+            string testAC = SongDecoder("RWUBWUBWUBLWUB");
+            string testAD = SongDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB");
+
+
+            Console.WriteLine(testAB);
+            Console.WriteLine(testAC);
+            Console.WriteLine(testAD);
+
+            //NEWWORDORDER
+
+            string inOrder = Order("is2 Thi1s T4est 3a");
+            Console.WriteLine(inOrder);
+
+
+
+
         }
+
+        public static string Order(string words)
+        {
+            if (words == String.Empty)
+                return String.Empty;
+
+            string[] wordsSplit = new string[3];
+            wordsSplit = words.Split(' ').ToArray();
+
+            return "a";
+        
+
+        }
+
+
+
+
+
+        public static string SongDecoder(string input)
+        {
+            input = Regex.Replace(input, "WUBWUBWUB", " ");
+            input = Regex.Replace(input, "WUBWUB", " ");
+            input = Regex.Replace(input, "WUB", " ");
+            return input.Trim();
+        }
+
+        public static int Number(List<int[]> peopleListInOut)
+        {
+            // Happy Coding
+            int onboard = 0;
+
+            foreach (var item in peopleListInOut)
+            {
+                onboard += item[0];
+                onboard -= item[1];
+            }
+
+            return onboard;
+        }
+
+
+
+
 
 
 
@@ -171,12 +242,7 @@ namespace CodeWars
             return 0;
         }
 
-        //    return c;
-        //}
-
-
-
-
+        
 
         public static int DuplicateCount(string str)
         {
