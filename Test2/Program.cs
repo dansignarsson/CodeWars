@@ -135,7 +135,51 @@ namespace CodeWars
             string inOrder = Order("is2 Thi1s T4est 3a");
             Console.WriteLine(inOrder);
 
+            //ArrayDiff
 
+            int[] a = ArrayDiff(new int[] { 1, 2 }, new int[] { 1 });
+            int[] b = ArrayDiff(new int[] { 1, 2, 2, 2, 2 }, new int[] { 1 });
+            int[] c = ArrayDiff(new int[] { 1, 2, 2 }, new int[] { 2 });
+            int[] d = ArrayDiff(new int[] { 1, 2, 2 }, new int[] { });
+            int[] e = ArrayDiff(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15 }, new int[] { 1, 7, 7 });
+
+            foreach (var item in b)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+
+
+        public static int[] ArrayDiff(int[] a, int[] b)
+        {
+
+            for (int i = 0; i < b.Length; i++)
+            {
+                foreach (var number in a)
+                {
+                    int numIndex = i;
+                    a = a.Where((val, idx) => idx == b[i]).ToArray();
+                }
+            }
+
+
+            return a;
+
+
+
+
+            // Your brilliant solution goes here
+            // It's possible to pass random tests in about a second ;)
+            //IEnumerable<int> aOnlyNumbers = a.Except(b);
+            //foreach (var numberB in b)
+            //{
+            //    foreach (var numberA in a)
+            //    {
+            //        if(numberA == numberB)
+            //        a = a.Where(val => val != numberB).ToArray();
+            //    }
+            //}
 
 
         }
@@ -178,11 +222,6 @@ namespace CodeWars
 
             return onboard;
         }
-
-
-
-
-
 
 
         public static int Test(string numbers)
