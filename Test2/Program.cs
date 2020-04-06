@@ -76,19 +76,23 @@ namespace CodeWars
             Console.WriteLine(resultBoolC);
 
 
+
             // Sum Of Numbers(from A to B)
             int sumA = -1;
             int sumB = -5;
 
-
             int sum = GetSum(sumA, sumB);
             Console.WriteLine(sum);
+
+
 
             //Square Every Digit
             int squareMe = 9999;
             int squaredMe = SquareDigits(squareMe);
 
             Console.WriteLine(squaredMe);
+
+
 
             //DuplicateCount
 
@@ -107,6 +111,7 @@ namespace CodeWars
             //}
 
 
+
             //IQTest..
             Console.WriteLine(Test("2 4 7 8 10"));
 
@@ -117,6 +122,7 @@ namespace CodeWars
 
             int resultNumber = Number(peopleListInOut);
             Console.WriteLine(resultNumber);
+
 
 
             //WUBWUBWUBWUB
@@ -130,10 +136,14 @@ namespace CodeWars
             Console.WriteLine(testAC);
             Console.WriteLine(testAD);
 
+
+
             //NEWWORDORDER
 
             string inOrder = Order("is2 Thi1s T4est 3a");
             Console.WriteLine(inOrder);
+
+
 
             //ArrayDiff
 
@@ -148,8 +158,38 @@ namespace CodeWars
                 Console.WriteLine(item);
             }
 
+            //Split String into pairs. if pairs are not even, even it out with "_"
+
+            string[] resultSol = Solution("abcdedasdsdvsdfsfdada");
+            foreach (var item in resultSol)
+            {
+                Console.WriteLine(item);
+            }
+
         }
 
+
+
+        public static string[] Solution(string str)
+        {
+
+            if (str.Length % 2 > 0)
+                str += "_";
+
+            int itt = 0;
+            int a = 0;
+            int b = 2;
+
+            string[] separated = new string[str.Length / 2]; 
+            while (itt < separated.Count())
+            {
+                separated[itt] = str.Substring(a, b);
+                itt++;
+                a += 2;
+            }
+
+               return separated;
+        }
 
         public static int[] ArrayDiff(int[] a, int[] b)
         {
@@ -184,17 +224,38 @@ namespace CodeWars
 
         }
 
+
+        //Input = "is2 Thi1s T4est 3a"
+        //Output = "This is a Test"
         public static string Order(string words)
         {
-            if (words == String.Empty)
-                return String.Empty;
+            if (words == string.Empty)
+                return string.Empty;
 
-            string[] wordsSplit = new string[3];
-            wordsSplit = words.Split(' ').ToArray();
+            int k = 0;
+            string [] wordsSplit = words.Split(' ').ToArray();
+            string[] result = new string[wordsSplit.Length];
 
-            return "a";
-        
+            for (int i = 0; i < wordsSplit.Length + 1; i++)
+            {
+                foreach (var item in wordsSplit)
+                {
+                    if (item.Contains(i.ToString()))
+                    {
+                        result[k] = item.Replace(i.ToString(), "");
+                        k++;
+                    }
+                }
 
+            }
+
+            return string.Join(" ", result);
+        }
+
+        //Top Rated
+        public static string OrderAgain(string words)
+        {
+            return string.Join(" ", words.Split().OrderBy(w => w.SingleOrDefault(char.IsDigit)));
         }
 
 
